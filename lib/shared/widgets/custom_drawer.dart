@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/pages/configuracoes_page.dart';
 import 'package:trilhaapp/pages/dados_cadastrais.dart';
 import 'package:trilhaapp/pages/login_page.dart';
+import 'package:trilhaapp/pages/numeros_aleatorios_page.dart';
 
 
 class CustomDrawer extends StatelessWidget{
@@ -170,6 +172,44 @@ class CustomDrawer extends StatelessWidget{
                           ]
                         );
                       });
+                  }
+                ),
+                const Divider(),
+                const SizedBox(height: 10),
+                InkWell(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    width: double.infinity,
+                    child: const Row(
+                      children: [
+                        Icon(Icons.numbers),
+                        SizedBox(width: 5),
+                        Text("Gerador de números"),
+                      ],
+                    )
+                    ),
+                  onTap: (){
+                    Navigator.pop(context);
+                    Navigator.push(context, MaterialPageRoute(builder: (bc) => const NumerosAleatoriosPage()));
+                  }
+                ),
+                const Divider(),
+                const SizedBox(height: 10),
+                InkWell(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    width: double.infinity,
+                    child: const Row(
+                      children: [
+                        Icon(Icons.numbers),
+                        SizedBox(width: 5),
+                        Text("Configurações"),
+                      ],
+                    )
+                    ),
+                  onTap: (){
+                    Navigator.pop(context);
+                    Navigator.push(context, MaterialPageRoute(builder: (bc) => const ConfiguracoesPage()));
                   }
                 ),
               ],
