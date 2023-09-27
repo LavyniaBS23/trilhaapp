@@ -192,7 +192,7 @@ class CustomDrawer extends StatelessWidget{
                     ),
                   onTap: (){
                     Navigator.pop(context);
-                    Navigator.push(context, MaterialPageRoute(builder: (bc) => const NumerosAleatoriosHivePage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (bc) => const NumerosAleatoriosSheredPreferencesPage()));
                   }
                 ),
                 const Divider(),
