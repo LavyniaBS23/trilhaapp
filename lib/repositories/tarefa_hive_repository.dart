@@ -1,5 +1,4 @@
 import 'package:hive/hive.dart';
-import 'package:trilhaapp/model/tarefa.dart';
 import 'package:trilhaapp/model/tarefa_hive_model.dart';
 
 class TarefaHiveRepository {

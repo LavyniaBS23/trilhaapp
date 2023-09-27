@@ -5,6 +5,7 @@ import 'package:trilhaapp/model/tarefa_hive_model.dart';
 import 'model/dados_cadastrais_model.dart';
 import 'my_app.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var documentsDirectory =
