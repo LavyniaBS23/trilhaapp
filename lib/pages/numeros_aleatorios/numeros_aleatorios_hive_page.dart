@@ -1,23 +1,23 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hive/hive.dart';
 import 'package:trilhaapp/services/app_storage_service.dart';
 
-class NumerosAleatoriosPage extends StatefulWidget {
-  const NumerosAleatoriosPage({Key? key}) : super(key: key);
+class NumerosAleatoriosHivePage extends StatefulWidget {
+  const NumerosAleatoriosHivePage({Key? key}) : super(key: key);
 
   @override
-  State<NumerosAleatoriosPage> createState() => _NumerosAleatoriosPageState();
+  State<NumerosAleatoriosHivePage> createState() =>
+      _NumerosAleatoriosHivePageState();
 }
 
-class _NumerosAleatoriosPageState extends State<NumerosAleatoriosPage> {
+class _NumerosAleatoriosHivePageState extends State<NumerosAleatoriosHivePage> {
   int? numeroGerado;
   int? qntCliques;
   /*final  CHAVE_NUMERO_ALEATORIO = "numero_aleatorio";
   final CHAVE_QNT_CLIQUES = "chave_qnt_cliques";*/
-  AppStorageService storage =
-      AppStorageService(); // late garante que vai ter um valor
+  late Box boxNumerosAleatorios; // late garante que vai ter um valor
   @override
   void initState() {
     // TODO: implement initState
@@ -26,15 +26,21 @@ class _NumerosAleatoriosPageState extends State<NumerosAleatoriosPage> {
   }
 
   void carregarDados() async {
-    numeroGerado = await storage.getNumerosAleatoriosNumeroGerado();
-    qntCliques = await storage.getNumerosAleatoriosQntCliques();
+    if (Hive.isBoxOpen('box_numeros_aleatorios')) {
+      boxNumerosAleatorios = Hive.box('box_numeros_aleatorios');
+    } else {
+      boxNumerosAleatorios = await Hive.openBox('box_numeros_aleatorios');
+    }
+    numeroGerado = await boxNumerosAleatorios.get('numeroGerado') ?? 0;
+    qntCliques = await boxNumerosAleatorios.get('qntCliques') ?? 0;
+
     setState(() {});
   }
 
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: const Text("Gerador de números")),
+        appBar: AppBar(title: const Text("Hive")),
         body: Container(
             alignment: Alignment.center, //centraliza horizontalmente
             child: Column(
@@ -63,9 +69,8 @@ class _NumerosAleatoriosPageState extends State<NumerosAleatoriosPage> {
                 numeroGerado = random.nextInt(1000);
                 qntCliques = qntCliques! + 1;
               });
-              await storage.setNumerosAleatoriosNumeroGerado(
-                  numeroGerado!); //! garante que o número não é nulo
-              await storage.setNumerosAleatoriosQntCliques(qntCliques!);
+             boxNumerosAleatorios.put('numeroGerado', numeroGerado);
+             boxNumerosAleatorios.put('qntCliques', qntCliques);
             }),
       ),
     );
