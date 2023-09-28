@@ -6,7 +6,7 @@ class ConfiguracoesRepository {
 
   ConfiguracoesRepository._criar();
 
-  Future<ConfiguracoesRepository> carregar() async {
+  static Future<ConfiguracoesRepository> carregar() async {
     if (Hive.isBoxOpen('Configuracoes')) {
       _box = Hive.box('Configuracoes');
     } else {
@@ -16,7 +16,7 @@ class ConfiguracoesRepository {
   }
 
   void salvar(ConfiguracoesModel configuracoesModel){
-    _box.put('ConfiguracoesModel', {
+    _box.put('Configuracoes', {
       'nomeUsuario' : configuracoesModel.nomeUsuario,
       'altura' : configuracoesModel.altura,
       'receberNotificacoes' : configuracoesModel.receberNotificacoes,
@@ -25,7 +25,7 @@ class ConfiguracoesRepository {
   }
 
   ConfiguracoesModel obterDados(){
-    var configuracoes = _box.get('configuracoesModel');
+    var configuracoes = _box.get('Configuracoes');
 
     if(configuracoes == null){
       return ConfiguracoesModel.vazio();

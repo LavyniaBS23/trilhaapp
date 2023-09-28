@@ -1,3 +1,5 @@
+import 'package:hive/hive.dart';
+
 class ConfiguracoesModel {
   String _nomeUsuario = "";
   double _altura = 0;

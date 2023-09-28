@@ -70,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.white,
                   ),
                   decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.only(top: 5),
+                    contentPadding: EdgeInsets.only(bottom: 2),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Color.fromARGB(255, 189, 63, 243))
                     ),
@@ -100,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.white,
                   ),
                   decoration:  InputDecoration(
-                    contentPadding: const EdgeInsets.only(top: 5),
+                    contentPadding: const EdgeInsets.only(bottom: 2),
                     enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(color: Color.fromARGB(255, 189, 63, 243))
                     ),

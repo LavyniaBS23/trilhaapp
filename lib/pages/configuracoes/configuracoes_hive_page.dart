@@ -30,7 +30,7 @@ class _ConfiguracoesHivePageState extends State<ConfiguracoesHivePage> {
   }
 
   void carregarDados() async {
-    configuracoesRepository = await configuracoesRepository.carregar();
+    configuracoesRepository = await ConfiguracoesRepository.carregar();
     configuracoesModel = configuracoesRepository.obterDados();
     nomeUsuarioController.text = configuracoesModel.nomeUsuario;
     alturaController.text = configuracoesModel.altura.toString();
