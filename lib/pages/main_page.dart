@@ -3,8 +3,10 @@ import 'package:trilhaapp/pages/card_page.dart';
 import 'package:trilhaapp/pages/image_assets.dart';
 import 'package:trilhaapp/pages/list_view.dart';
 import 'package:trilhaapp/pages/list_view_horizontal.dart';
+import 'package:trilhaapp/pages/posts_page.dart';
 import 'package:trilhaapp/pages/tarefas/tarefa_hive_page.dart';
 import 'package:trilhaapp/pages/tarefas/tarefa_sql_page.dart';
+import 'package:trilhaapp/pages/consulta_cep.dart';
 import 'package:trilhaapp/shared/widgets/custom_drawer.dart';
 
 class MainPage extends StatefulWidget {
@@ -37,6 +39,7 @@ class _MainPageState extends State<MainPage> {
                 },
                 //scrollDirection: Axis.vertical,
                 children: const [
+                  PostsPage(),
                   CardPage(),
                   ImageAssetsPage(),
                   ListViewPage(),
@@ -52,6 +55,10 @@ class _MainPageState extends State<MainPage> {
               },
               currentIndex: posicaoPagina,
               items:const [
+                BottomNavigationBarItem(
+                  label: "Http", 
+                  icon: Icon(Icons.get_app_rounded)
+                ),
                 BottomNavigationBarItem(
                   label: "Pag1", 
                   icon: Icon(Icons.home)

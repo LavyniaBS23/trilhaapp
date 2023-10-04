@@ -40,6 +40,8 @@ dependencies:
   hive: ^2.2.3
   path_provider: ^2.1.1
   sqflite: ^2.3.0
+  http: ^1.1.0
+  dio: ^5.3.3
 
 dev_dependencies:
   flutter_test:
